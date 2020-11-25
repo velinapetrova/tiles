@@ -1,5 +1,5 @@
 <div class="grid grid-cols-4 gap-4 w-max mx-auto p-6 md:p-8 bg-gray-300 rounded-xl">
-  <%= for tile <- 1..@number_of_tiles do %>
-    <%= live_component @socket, TileComponent, tile: tile  %>
+  <%= for tile <- @tiles do %>
+    <%= live_component @socket, TileComponent, state: tile.state, value: tile.value  %>
   <% end %>
 </div>
