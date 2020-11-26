@@ -1,5 +1,6 @@
-<div class="grid grid-cols-4 gap-4 w-max mx-auto p-6 md:p-8 bg-gray-300 rounded-xl">
+<h3 class="text-center text-3xl pb-4">Remaining Pairs: <%= @remaining_pairs %></h3>
+<div class="grid grid-cols-4 gap-2 w-max mx-auto p-4 bg-gray-300 rounded-xl">
   <%= for tile <- @tiles do %>
-    <%= live_component @socket, TileComponent, state: tile.state, value: tile.value  %>
+    <%= live_component @socket, TileComponent, id: tile.id, state: tile.state, value: tile.value  %>
   <% end %>
 </div>
