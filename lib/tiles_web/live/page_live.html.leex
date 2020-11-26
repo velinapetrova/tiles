@@ -1,6 +1,18 @@
-<h3 class="text-center text-3xl pb-4">Remaining Pairs: <%= @remaining_pairs %></h3>
+<h3 class="text-center text-3xl pb-4">
+  <%= if @remaining_pairs > 0 do %>
+    <span>Remaining Pairs: <%= @remaining_pairs %></span>
+  <% else %>
+    <span class="uppercase text-green-500">Congratulations!!!</span>
+  <% end %>
+</h3>
+
 <div class="grid grid-cols-4 gap-2 w-max mx-auto p-4 bg-gray-300 rounded-xl">
   <%= for tile <- @tiles do %>
     <%= live_component @socket, TileComponent, id: tile.id, state: tile.state, value: tile.value  %>
   <% end %>
 </div>
+<a class="text-white text-lg font-serif font-semibold bg-blue-500 my-4 px-8 py-4 rounded-full w-max"
+  href="#"
+  phx-click="new-game">
+  New Game
+</a>

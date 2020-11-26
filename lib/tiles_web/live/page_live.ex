@@ -7,13 +7,19 @@ defmodule TilesWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    socket =
-      socket
-      |> assign(tiles: generate_tiles())
-      |> assign(selected_tile: nil)
-      |> assign(remaining_pairs: @number_of_pairs)
+    {:ok, setup_game(socket)}
+  end
 
-    {:ok, socket}
+  @impl true
+  def handle_event("new-game", _value, socket) do
+    {:noreply, setup_game(socket)}
+  end
+
+  defp setup_game(socket) do
+    socket
+    |> assign(tiles: generate_tiles())
+    |> assign(selected_tile: nil)
+    |> assign(remaining_pairs: @number_of_pairs)
   end
 
   @impl true
